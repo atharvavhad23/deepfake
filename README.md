@@ -1,6 +1,29 @@
 # Deepfake Detection System
 
 A starter project for classifying manipulated and authentic images/videos for forensic use.
+## Model weights and Git LFS
+
+Large model weight files (e.g. `*.pth`) are tracked using Git LFS to keep the repository lightweight. After cloning the repository, install Git LFS and pull LFS objects:
+
+```powershell
+git lfs install
+git lfs pull
+```
+
+If you push new large weight files, add them to LFS first:
+
+```powershell
+git lfs track "*.pth"
+git add .gitattributes
+git add path/to/weights.pth
+git commit -m "Add model weights to LFS"
+git push
+```
+
+If you need history rewritten to migrate existing large files into LFS, the repository maintainer can run `git lfs migrate import --include="*.pth"` and force-push the cleaned history.
+# Deepfake Detection System
+
+A starter project for classifying manipulated and authentic images/videos for forensic use.
 
 ## What is included
 
