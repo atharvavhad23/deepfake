@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Deepfake Detective | Police Forensics Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-mark">DD</div>
+          <div>
+            <div class="brand-title">Deepfake Detective</div>
+            <div class="brand-subtitle">Police Forensics Console</div>
+          </div>
+        </div>
+
+        <nav class="nav">
+          <a class="nav-item active" href="#upload">Upload</a>
+          <a class="nav-item" href="#jobs">Active Jobs</a>
+          <a class="nav-item" href="#archive">Archived Reports</a>
+          <a class="nav-item" href="#settings">Settings</a>
+        </nav>
+
+        <div class="sidebar-card">
+          <div class="sidebar-card-label">System Trust</div>
+          <div class="sidebar-metric">Encrypted chain-of-custody</div>
+          <p>Processing artifacts are timestamped, traceable, and ready for evidentiary review.</p>
+        </div>
+      </aside>
+
+      <main class="main-panel">
+        <header class="topbar">
+          <div>
+            <div class="eyebrow">Forensic Intelligence Dashboard</div>
+            <h1>Analyze manipulated media with a defensible evidence workflow.</h1>
+          </div>
+          <div class="status-pill">Live pipeline ready</div>
+        </header>
+
+        <section class="hero-grid">
+          <article class="panel upload-panel" id="upload">
+            <div class="panel-header">
+              <div>
+                <h2>Analyze New Media (Video/Image)</h2>
+                <p>Drop a file to start frame extraction, face cropping, and normalization.</p>
+              </div>
+              <button class="ghost-btn" id="sampleBtn" type="button">Load sample case</button>
+            </div>
+
+            <label class="dropzone" id="dropzone" for="fileInput">
+              <input id="fileInput" type="file" accept="image/*,video/*" hidden />
+              <div class="dropzone-icon">↑</div>
+              <div class="dropzone-title">Drag and drop evidence here</div>
+              <div class="dropzone-copy">or click to browse local images and videos</div>
+              <div class="dropzone-meta">Supported: MP4, MOV, AVI, JPG, PNG</div>
+            </label>
+          </article>
+
+          <aside class="panel inspector-panel" id="jobs">
+            <div class="panel-header compact">
+              <div>
+                <h2>Active Jobs</h2>
+                <p>Case queue and processing telemetry.</p>
+              </div>
+              <div class="mini-badge" id="jobCount">0 running</div>
+            </div>
+
+            <div class="job-list">
+              <div class="job-item">
+                <span class="job-dot live"></span>
+                <div>
+                  <strong>Case #DF-1842</strong>
+                  <p>Awaiting evidence upload</p>
+                </div>
+              </div>
+              <div class="job-item">
+                <span class="job-dot queued"></span>
+                <div>
+                  <strong>Case #DF-1839</strong>
+                  <p>Archived validation complete</p>
+                </div>
+              </div>
+            </div>
+          </aside>
+        </section>
+
+        <section class="panel pipeline-panel">
+          <div class="panel-header compact">
+            <div>
+              <h2>Job Pipeline Status</h2>
+              <p>Visual evidence flow from source file to model-ready tensors.</p>
+            </div>
+            <div class="mini-badge">Stage <span id="stageLabel">Idle</span></div>
+          </div>
+
+          <div class="pipeline">
+            <div class="pipeline-step active" data-step="0">
+              <span class="step-index">1</span>
+              <span>[File Ingested]</span>
+            </div>
+            <div class="pipeline-arrow">→</div>
+            <div class="pipeline-step" data-step="1">
+              <span class="step-index">2</span>
+              <span>[Frame Extraction]</span>
+            </div>
+            <div class="pipeline-arrow">→</div>
+            <div class="pipeline-step" data-step="2">
+              <span class="step-index">3</span>
+              <span>[Face Cropping]</span>
+            </div>
+            <div class="pipeline-arrow">→</div>
+            <div class="pipeline-step" data-step="3">
+              <span class="step-index">4</span>
+              <span>[Data Normalization]</span>
+            </div>
+          </div>
+
+          <div class="progress-track">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+        </section>
+
+        <section class="panel gallery-panel hidden" id="archive">
+          <div class="panel-header compact">
+            <div>
+              <h2>Inspection Gallery</h2>
+              <p>Cropped faces extracted from the background script, ready for analyst review.</p>
+            </div>
+            <div class="mini-badge success" id="gallerySummary">0 crops</div>
+          </div>
+
+          <div class="gallery-grid" id="galleryGrid"></div>
+        </section>
+
+        <section class="bottom-grid">
+          <article class="panel summary-panel" id="settings">
+            <div class="panel-header compact">
+              <div>
+                <h2>Case Summary</h2>
+                <p>Evidence quality and operational context.</p>
+              </div>
+            </div>
+
+            <div class="summary-metrics">
+              <div class="metric-card">
+                <span>Confidence threshold</span>
+                <strong>0.92</strong>
+              </div>
+              <div class="metric-card">
+                <span>Frame rate sampled</span>
+                <strong>5 fps</strong>
+              </div>
+              <div class="metric-card">
+                <span>Crop size</span>
+                <strong>224×224</strong>
+              </div>
+            </div>
+          </article>
+
+          <article class="panel archive-panel" id="archived">
+            <div class="panel-header compact">
+              <div>
+                <h2>Archived Reports</h2>
+                <p>Previous analyses with review-ready export status.</p>
+              </div>
+            </div>
+            <div class="archive-item">
+              <div>
+                <strong>Case #DF-1827</strong>
+                <p>Deepfake probability: 96% | Finalized for review</p>
+              </div>
+              <span class="archive-tag">PDF</span>
+            </div>
+            <div class="archive-item">
+              <div>
+                <strong>Case #DF-1811</strong>
+                <p>Deepfake probability: 83% | Waiting for supervisor sign-off</p>
+              </div>
+              <span class="archive-tag">CSV</span>
+            </div>
+          </article>
+        </section>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
